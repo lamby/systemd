@@ -1711,6 +1711,8 @@ TEST_DATA_FILES += \
 	test/test-execute/exec-dynamicuser-supplementarygroups.service \
 	test/test-execute/exec-ignoresigpipe-no.service \
 	test/test-execute/exec-ignoresigpipe-yes.service \
+	test/test-execute/exec-monitor.service \
+	test/test-execute/exec-monitor-multiple.service \
 	test/test-execute/exec-personality-x86-64.service \
 	test/test-execute/exec-personality-x86.service \
 	test/test-execute/exec-personality-s390.service \

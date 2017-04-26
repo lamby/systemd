@@ -57,6 +57,7 @@ typedef enum ServiceExecCommand {
         SERVICE_EXEC_RELOAD,
         SERVICE_EXEC_STOP,
         SERVICE_EXEC_STOP_POST,
+        SERVICE_EXEC_MONITOR,
         _SERVICE_EXEC_COMMAND_MAX,
         _SERVICE_EXEC_COMMAND_INVALID = -1
 } ServiceExecCommand;
@@ -91,6 +92,7 @@ typedef enum ServiceResult {
         SERVICE_FAILURE_CORE_DUMP,
         SERVICE_FAILURE_WATCHDOG,
         SERVICE_FAILURE_START_LIMIT_HIT,
+        SERVICE_FAILURE_MONITOR,
         _SERVICE_RESULT_MAX,
         _SERVICE_RESULT_INVALID = -1
 } ServiceResult;

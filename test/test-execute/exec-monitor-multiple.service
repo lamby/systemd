@@ -1,0 +1,6 @@
+[Unit]
+Description=Test for multiple ExecMonitor
+
+[Service]
+ExecStart=/bin/true
+ExecMonitor=/bin/true

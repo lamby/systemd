@@ -3048,6 +3048,8 @@ static void service_sigchld_event(Unit *u, pid_t pid, int code, int status) {
                                         service_search_main_pid(s);
 
                                 service_enter_running(s, SERVICE_SUCCESS);
+                                /* Start ExecMonitor here? */
+                                /* service_enter_signal(s, SERVICE_STOP_SIGTERM, SERVICE_FAILURE_PROTOCOL); on failure? */
                                 break;
 
                         case SERVICE_RELOAD:
@@ -3569,6 +3571,7 @@ static const char* const service_exec_command_table[_SERVICE_EXEC_COMMAND_MAX] =
         [SERVICE_EXEC_RELOAD] = "ExecReload",
         [SERVICE_EXEC_STOP] = "ExecStop",
         [SERVICE_EXEC_STOP_POST] = "ExecStopPost",
+        [SERVICE_EXEC_MONITOR] = "ExecMonitor",
 };
 
 DEFINE_STRING_TABLE_LOOKUP(service_exec_command, ServiceExecCommand);
@@ -3601,6 +3604,7 @@ static const char* const service_result_table[_SERVICE_RESULT_MAX] = {
         [SERVICE_FAILURE_CORE_DUMP] = "core-dump",
         [SERVICE_FAILURE_WATCHDOG] = "watchdog",
         [SERVICE_FAILURE_START_LIMIT_HIT] = "start-limit-hit",
+        [SERVICE_FAILURE_MONITOR] = "monitor",
 };
 
 DEFINE_STRING_TABLE_LOOKUP(service_result, ServiceResult);

@@ -530,6 +530,13 @@
       </varlistentry>
 
       <varlistentry>
+        <term><varname>ExecMonitor=</varname></term>
+        <listitem><para>Additional commands that are executed after the service
+        is started. If any of those commands fail, the unit is considered
+        failed.</para></listitem>
+      </varlistentry>
+
+      <varlistentry>
         <term><varname>Restart=</varname></term>
         <listitem><para>Configures whether the service shall be
         restarted when the service process exits, is killed, or a

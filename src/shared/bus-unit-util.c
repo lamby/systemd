@@ -851,7 +851,8 @@ static const struct {
         { "signal",      "a fatal signal was delivered to the control process" },
         { "core-dump",   "a fatal signal was delivered causing the control process to dump core" },
         { "watchdog",    "the service failed to send watchdog ping" },
-        { "start-limit", "start of the service was attempted too often" }
+        { "start-limit", "start of the service was attempted too often" },
+        { "monitor",     "a monitor process exited" },
 };
 
 static void log_job_error_with_service_result(const char* service, const char *result, const char* const* extra_args) {

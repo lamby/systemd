@@ -125,6 +125,8 @@ test_data_files = '''
         test-execute/exec-read-only-path-succeed.service
         test-execute/exec-privatedevices-yes-capability-sys-rawio.service
         test-execute/exec-privatedevices-no-capability-sys-rawio.service
+        test-execute/exec-monitor.service
+        test-execute/exec-monitor-multiple.service
         bus-policy/hello.conf
         bus-policy/methods.conf
         bus-policy/ownerships.conf
