@@ -1744,6 +1744,36 @@ fail:
         service_enter_stop(s, SERVICE_FAILURE_RESOURCES);
 }
 
+static void service_start_monitor(Service *s) {
+        int r;
+        assert(s);
+
+        service_unwatch_control_pid(s);
+        service_reset_watchdog(s);
+
+        s->control_command = s->exec_command[SERVICE_EXEC_MONITOR];
+        if (s->control_command) {
+                s->control_command_id = SERVICE_EXEC_START_POST;
+
+                r = service_spawn(s,
+                                  s->control_command,
+                                  s->timeout_start_usec,
+                                  EXEC_APPLY_PERMISSIONS|EXEC_APPLY_CHROOT|EXEC_IS_CONTROL,
+                                  &s->control_pid);
+                if (r < 0)
+                        goto fail;
+
+                service_set_state(s, SERVICE_START_POST);
+        } else
+                service_enter_running(s, SERVICE_SUCCESS);
+
+        return;
+
+fail:
+        log_unit_warning_errno(UNIT(s), r, "Failed to run 'start-post' task: %m");
+        service_enter_stop(s, SERVICE_FAILURE_RESOURCES);
+}
+
 static void service_kill_control_processes(Service *s) {
         char *p;
 
